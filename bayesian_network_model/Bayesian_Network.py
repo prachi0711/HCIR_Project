@@ -32,20 +32,41 @@ bn.cpt('Lifestyle').fillWith([0.4, 0.4, 0.2])
 
 # Rules for probability assignments
 def assign_probabilities(interest, skill, background, lifestyle):
-    
-    if interest == 0 and skill == 0 and background == 0: 
-        return [0.9, 0.05, 0.05] # Data Scientist
-    elif interest == 1 and skill == 1 and background == 1: 
-        return [0.1, 0.8, 0.1] # Writer
-    elif interest == 1 and skill == 1: 
-        return [0.55, 0.8, 0.55] # Writer
-    elif lifestyle == 2 and skill==0: 
-        return [0.2, 0.3, 0.5] # Manager
-    elif interest == 2 and skill == 2 and background == 0:  
+    if interest == 0 and skill == 0 and background == 0 and lifestyle == 0:
+        return [0.9, 0.05, 0.05]  # Data Scientist
+    elif interest == 1 and skill == 1 and background == 1 and lifestyle == 1:
+        return [0.1, 0.8, 0.1]  # Writer
+    elif interest == 1 and skill == 1 and background == 1 and lifestyle == 2:
+        return [0.55, 0.8, 0.55]  # Writer
+    elif interest == 2 and skill == 2 and background == 0 and lifestyle == 2:
         return [0.4, 0.2, 0.4]  # Balanced
-    elif background == 2:  
+    elif interest == 2 and skill == 2 and background == 0 and lifestyle == 0:
+        return [0.4, 0.3, 0.3]  # Balanced
+    elif interest == 2 and skill == 2 and background == 1 and lifestyle == 0:
         return [0.3, 0.3, 0.4]  # Manager
-    else:  
+    elif interest == 0 and skill == 0 and background == 2 and lifestyle == 0:
+        return [0.3, 0.3, 0.4]  # Manager
+    elif interest == 0 and skill == 0 and background == 2 and lifestyle == 1:
+        return [0.4, 0.3, 0.3]  # Data Scientist
+    elif interest == 1 and skill == 1 and background == 0 and lifestyle == 0:
+        return [0.55, 0.8, 0.55]  # Writer
+    elif interest == 1 and skill == 1 and background == 0 and lifestyle == 1:
+        return [0.4, 0.4, 0.2]  # Balanced
+    elif interest == 2 and skill == 2 and background == 1 and lifestyle == 2:
+        return [0.3, 0.3, 0.4]  # Manager
+    elif interest == 0 and skill == 2 and background == 0 and lifestyle == 2:
+        return [0.3, 0.3, 0.4]  # Manager
+    elif interest == 0 and skill == 0 and background == 1 and lifestyle == 1:
+        return [0.3, 0.3, 0.4]  # Manager
+    elif interest == 1 and skill == 0 and background == 1 and lifestyle == 0:
+        return [0.55, 0.4, 0.05]  # Writer
+    elif interest == 1 and skill == 0 and background == 1 and lifestyle == 2:
+        return [0.2, 0.75, 0.05]  # Writer
+    elif interest == 0 and skill == 0 and background == 0 and lifestyle == 2:
+        return [0.2, 0.3, 0.5]  # Manager
+    elif interest == 0 and skill == 0 and background == 1 and lifestyle == 2:
+        return [0.4, 0.3, 0.3]  # Balanced
+    else:
         return [0.4, 0.3, 0.3]  # Default
 
 # CPTs for Career
