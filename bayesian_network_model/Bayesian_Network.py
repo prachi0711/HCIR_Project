@@ -10,13 +10,13 @@ import itertools
 bn = gum.BayesNet('CareerCoach')
 
 # User Preferences
-bn.add(gum.LabelizedVariable('Interest', 'Interest in field', 3))  # 0: Science, 1: Arts, 2: Technology
-bn.add(gum.LabelizedVariable('Skill', 'Skill level', 3))  # 0: Analytical, 1: Creative, 2: Communicative
-bn.add(gum.LabelizedVariable('Background', 'Educational Background', 3))  # 0: STEM, 1: Humanities, 2: Commerce
-bn.add(gum.LabelizedVariable('Lifestyle', 'Preferred lifestyle', 3)) # 0: Flexible, 1: Fixed Hours, 2: Traveling
+bn.add(gum.LabelizedVariable('Interest', 'Interest in field', 3)) 
+bn.add(gum.LabelizedVariable('Skill', 'Skill level', 3))  
+bn.add(gum.LabelizedVariable('Background', 'Educational Background', 3))  
+bn.add(gum.LabelizedVariable('Lifestyle', 'Preferred lifestyle', 3)) 
 
 # Career Choices
-bn.add(gum.LabelizedVariable('Career', 'Career options', 3)) # 0: Data Scientist, 1: Writer, 2: Manager
+bn.add(gum.LabelizedVariable('Career', 'Career options', 3)) 
 
 # Dependencies
 bn.addArc('Interest', 'Career')
@@ -25,10 +25,10 @@ bn.addArc('Background', 'Career')
 bn.addArc('Lifestyle', 'Career')
 
 # Prior probabilities
-bn.cpt('Interest').fillWith([0.4, 0.3, 0.3])  # Science, Arts, Technology
-bn.cpt('Skill').fillWith([0.3, 0.4, 0.3])    # Analytical, Creative, Communicative
-bn.cpt('Background').fillWith([0.5, 0.3, 0.2])  # STEM, Humanities, Commerce
-bn.cpt('Lifestyle').fillWith([0.4, 0.4, 0.2])   # Flexible, Fixed Hours, Traveling
+bn.cpt('Interest').fillWith([0.4, 0.3, 0.3])  
+bn.cpt('Skill').fillWith([0.3, 0.4, 0.3])    
+bn.cpt('Background').fillWith([0.5, 0.3, 0.2])  
+bn.cpt('Lifestyle').fillWith([0.4, 0.4, 0.2])  
 
 # Rules for probability assignments
 def assign_probabilities(interest, skill, background, lifestyle):
