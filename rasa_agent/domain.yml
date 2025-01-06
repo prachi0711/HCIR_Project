@@ -1,0 +1,43 @@
+version: "3.0"
+intents:
+  - greet
+  - ask_career
+  - provide_preferences
+
+entities:
+  - skills
+  - interests
+  - education
+
+
+slots:
+  skills:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: skills
+  interests:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: interests
+  education:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: education
+
+responses:
+  utter_greet:
+    - text: "Hello! I can help you choose a career. What are your skills?"
+  utter_ask_skills:
+    - text: "What are your skills?"
+  utter_ask_interests:
+    - text: "What are your interests?"
+  utter_ask_education:
+    - text: "What is your educational background?"
+
+actions:
+  - action_get_career_choice
+
+

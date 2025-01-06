@@ -1,0 +1,13 @@
+version: "3.0"
+stories:
+  - story: Career suggestion story
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: provide_preferences
+      - action: utter_ask_skills
+      - intent: provide_preferences
+      - action: utter_ask_interests
+      - intent: provide_preferences
+      - action: utter_ask_education
+      - action: action_get_career_choice

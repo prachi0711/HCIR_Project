@@ -1,0 +1,16 @@
+version: "3.1"
+nlu:
+  - intent: greet
+    examples: |
+      - Hello
+      - Hi there
+      - Hey
+      - Good morning
+
+  - intent: provide_preferences
+    examples: |
+      - My skill is [Python](skills)
+      - I am interested in [Data Science](interests)
+      - I studied [Computer Science](education)
+
+
