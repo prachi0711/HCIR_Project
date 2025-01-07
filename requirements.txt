@@ -1,0 +1,9 @@
+certifi==2024.12.14
+charset-normalizer==3.4.1
+idna==3.10
+numpy==1.24.4
+pybullet==3.2.6
+pyttsx3==2.98
+qibullet==1.4.6
+requests==2.32.3
+urllib3==2.2.3

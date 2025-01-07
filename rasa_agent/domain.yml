@@ -1,43 +1,37 @@
-version: "3.0"
 intents:
   - greet
-  - ask_career
-  - provide_preferences
+  - provide_interest
+  - provide_skill
+  - ask_career_suggestion
+  - goodbye
 
 entities:
-  - skills
-  - interests
-  - education
-
+  - interest
+  - skill
 
 slots:
-  skills:
+  interest:
     type: text
     mappings:
       - type: from_entity
-        entity: skills
-  interests:
+        entity: interest
+  skill:
     type: text
     mappings:
       - type: from_entity
-        entity: interests
-  education:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: education
+        entity: skill
 
 responses:
   utter_greet:
-    - text: "Hello! I can help you choose a career. What are your skills?"
-  utter_ask_skills:
-    - text: "What are your skills?"
-  utter_ask_interests:
-    - text: "What are your interests?"
-  utter_ask_education:
-    - text: "What is your educational background?"
+    - text: "Hello! I'm here to help you find the best career options. What are your interests?"
+  utter_ask_skill:
+    - text: "Great! What skills do you have?"
+  utter_career_suggestion:
+    - text: "Based on your input, I suggest exploring the following careers: {career_suggestion}."
+  utter_goodbye:
+    - text: "Goodbye! Best of luck with your career!"
 
 actions:
-  - action_get_career_choice
-
-
+  - action_set_interest
+  - action_set_skill
+  - action_suggest_career
