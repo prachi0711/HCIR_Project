@@ -1,0 +1,12 @@
+{
+    "users": [
+        {
+            "username": "Behrouz",
+            "image": "images/Behrouz.jpg"
+        },
+        {
+            "username": "Prachi",
+            "image": "images/Prachi.jpg"
+        }
+    ]
+}
