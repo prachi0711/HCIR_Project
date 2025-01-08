@@ -1,6 +1,6 @@
 # HCIR Project
 
-This project aims to build a career advisor robot using a simulated Pepper robot in Qibullet, powered by a Rasa-based conversational agent. The robot will interact with users through dialogue and provide career suggestions based on their preferences, leveraging machine learning.
+This project aims to build a career advisor robot using a simulated Pepper robot in Qibullet, powered by a Rasa-based conversational agent. The robot will interact with users through dialogue and provide career suggestions using bayesian network model based on their preferences.
 
 ## Table of Contents
 
@@ -46,8 +46,8 @@ Rasa is used to manage the conversational flow and provide career suggestions. T
 
 Clone this repository to your local machine:
 
-git clone git@github.com:prachi0711/HCIR_Project.git
-cd HCIR_PROJECT
+`git clone git@github.com:prachi0711/HCIR_Project.git`
+`cd HCIR_PROJECT`
 
 ### 2. Install Dependencies
 
