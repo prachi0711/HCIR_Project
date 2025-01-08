@@ -1,8 +1,7 @@
 intents:
-  - greet
+  - career_help
   - provide_interest
   - provide_skill
-  - ask_career_suggestion
   - goodbye
 
 entities:
@@ -21,16 +20,19 @@ slots:
       - type: from_entity
         entity: skill
 
-responses:
-  utter_greet:
-    - text: "Hello! I'm here to help you find the best career options. What are your interests?"
-  utter_ask_skill:
-    - text: "Great! What skills do you have?"
-  utter_career_suggestion:
-    - text: "Based on your input, I suggest exploring the following careers: {career_suggestion}."
-  utter_goodbye:
-    - text: "Goodbye! Best of luck with your career!"
 
+responses:
+  utter_ask_interest:
+    - text: "What are your interests? Science, Arts, or Technology ?"
+  utter_ask_skill:
+    - text: "Great! What skills do you have? Analytical, Creative or Communicative?"
+  utter_ask_background:
+    - text: "what background do you have? STEM, humanities or commerce?"
+  utter_ask_lifestyle:
+    - text: "What lifestyle do you prefer? Flexible, fixed hours or traveling? "
+  utter_press_exit:
+    - text: "Hope it was helpful. Enter BYE to exit."
+  
 actions:
   - action_set_interest
   - action_set_skill

@@ -1,0 +1,36 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-background",
+      "2": "I-background",
+      "3": "L-background",
+      "4": "U-background",
+      "5": "B-interest",
+      "6": "I-interest",
+      "7": "L-interest",
+      "8": "U-interest",
+      "9": "B-skill",
+      "10": "I-skill",
+      "11": "L-skill",
+      "12": "U-skill",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-background": 1,
+      "I-background": 2,
+      "L-background": 3,
+      "U-background": 4,
+      "B-interest": 5,
+      "I-interest": 6,
+      "L-interest": 7,
+      "U-interest": 8,
+      "B-skill": 9,
+      "I-skill": 10,
+      "L-skill": 11,
+      "U-skill": 12,
+      "O": 0
+    },
+    "num_tags": 13
+  }
+]

@@ -58,7 +58,7 @@ class ActionSetSkill(Action):
             return [SlotSet("skill", skill)]
         dispatcher.utter_message(text="I didn't catch your skill. Could you please repeat?")
         return []
-
+    
 class ActionSuggestCareer(Action):
     def name(self) -> Text:
         return "action_suggest_career"
@@ -69,25 +69,19 @@ class ActionSuggestCareer(Action):
         interest = tracker.get_slot("interest")
         skill = tracker.get_slot("skill")
 
-        if not interest or not skill:
-            dispatcher.utter_message(text="I need both your interests and skills to suggest a career.")
+        if not interest:
+            dispatcher.utter_message(text="I need your interest to suggest a career.")
             return []
-
-        # Example: Use a Bayesian model or predefined mapping
+        if not skill:
+            dispatcher.utter_message(text="I need your skill to suggest a career.")
+            return []
+        
         career_suggestion = self.get_career_suggestion(interest, skill)
-        dispatcher.utter_message(text=f"Based on your interest in {interest} and skill in {skill}, I suggest: {career_suggestion}.")
+        dispatcher.utter_message(text=f"Based on your interest in {interest}, skill in {skill}, I suggest: {career_suggestion}.")
         return []
 
     @staticmethod
     def get_career_suggestion(interest: Text, skill: Text) -> Text:
-        # Placeholder logic for career suggestion
-        if interest == "technology" and skill == "coding":
-            return "Software Engineer"
-        elif interest == "arts" and skill == "painting":
-            return "Graphic Designer"
-        elif interest == "science" and skill == "research":
-            return "Research Scientist"
-        else:
-            return "a career aligned with your interests and skills."
+       return "X"
 
 
