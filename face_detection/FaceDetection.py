@@ -2,49 +2,61 @@ import threading
 
 import cv2
 from deepface import DeepFace
+from UserManager import *
 
-cap = cv2.VideoCapture(0, cv2.CAP_V4L)
+class FaceDetection:
+    def __init__(self):
+        self.cap = cv2.VideoCapture(0, cv2.CAP_V4L)
+        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+        self.manager = UserManager()
+        self.user_list = self.manager.get_users()
 
-counter = 0
+        self.counter = 0
+        self.face_match = False
+        self.current_user = None
 
-reference_img = cv2.imread("images/reference.jpg")  # use your own image here
-
-face_match = False
-
-
-def check_face(frame):
-    global face_match
-    try:
-        if DeepFace.verify(frame, reference_img.copy())['verified']:
-            face_match = True
-        else:
-            face_match = False
-    except ValueError:
-        face_match = False
+    def check_face(self, frame):
+        try:
+            for user in self.user_list:
+                if DeepFace.verify(frame, user.image.copy())['verified']:
+                    self.face_match = True
+                    self.current_user = user
+                else:
+                    self.face_match = False
+        except ValueError:
+            self.face_match = False
 
 
-while True:
-    ret, frame = cap.read()
+    def run_face_detection(self):
 
-    if ret:
-        if counter % 30 == 0:
-            try:
-                threading.Thread(target=check_face, args=(frame.copy(),)).start()
-            except ValueError:
-                pass
-        counter += 1
-        if face_match:
-            cv2.putText(frame, "Hi Behrouz!", (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)
-        else:
-            cv2.putText(frame, "NO MATCH!", (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 3)
+        while True:
+            ret, frame = self.cap.read()
 
-        cv2.imshow('video', frame)
+            if ret:
+                if self.counter % 30 == 0:
+                    try:
+                        threading.Thread(target=self.check_face, args=(frame.copy(),)).start()
+                    except ValueError:
+                        pass
+                self.counter += 1
+                if self.face_match:
+                    cv2.putText(frame, f"Hi {self.current_user.username}!", (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)
+                else:
+                    cv2.putText(frame, "NO MATCH!", (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 3)
 
-    key = cv2.waitKey(1)
-    if key == ord('q'):
-        break
+                cv2.imshow('video', frame)
 
-cv2.destroyAllWindows()
+            key = cv2.waitKey(1)
+            if key == ord('q'):
+                break
+
+        cv2.destroyAllWindows()
+
+
+
+if __name__ == '__main__':
+    face_detection = FaceDetection()
+    face_detection.run_face_detection()
+
