@@ -46,8 +46,11 @@ Rasa is used to manage the conversational flow and provide career suggestions. T
 
 Clone this repository to your local machine:
 
-`git clone git@github.com:prachi0711/HCIR_Project.git`
-`cd HCIR_PROJECT`
+```
+git clone git@github.com:prachi0711/HCIR_Project.git
+
+cd HCIR_PROJECT
+```
 
 ### 2. Install Dependencies
 
