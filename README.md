@@ -29,7 +29,9 @@ python -m venv .venv
 Activate the virtual environment:
 
 Linux/macOS:
-    source .venv/bin/activate
+   ```
+   source .venv/bin/activate
+```
 
 Windows:
 
