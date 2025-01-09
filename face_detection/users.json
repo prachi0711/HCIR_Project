@@ -1,0 +1,16 @@
+{
+    "users": [
+        {
+            "username": "Behrouz",
+            "image": "images/Behrouz.jpg"
+        },
+        {
+            "username": "Prachi",
+            "image": "images/Prachi.jpg"
+        },
+        {
+            "username": "Ujjwal",
+            "image": "images/Ujjwal.jpg"
+        }
+    ]
+}
