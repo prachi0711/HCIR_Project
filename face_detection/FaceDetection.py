@@ -74,7 +74,8 @@ class FaceDetection:
 
         cv2.waitKey(2000)
 
-
+        # Release the webcam resource and close OpenCV windows
+        self.cap.release()
         cv2.destroyAllWindows()
 
 
