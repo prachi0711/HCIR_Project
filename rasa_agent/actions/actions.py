@@ -33,6 +33,9 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 
 
+from bayesian_network_callback import career_recommendation
+
+
 class ActionSetInterest(Action):
     def name(self) -> Text:
         return "action_set_interest"
@@ -66,22 +69,20 @@ class ActionSuggestCareer(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        interest = tracker.get_slot("interest")
-        skill = tracker.get_slot("skill")
+        # interest = tracker.get_slot("interest")
+        # skill = tracker.get_slot("skill")
 
-        if not interest:
-            dispatcher.utter_message(text="I need your interest to suggest a career.")
-            return []
-        if not skill:
-            dispatcher.utter_message(text="I need your skill to suggest a career.")
-            return []
+        # if not interest:
+        #     dispatcher.utter_message(text="I need your interest to suggest a career.")
+        #     return []
+        # if not skill:
+        #     dispatcher.utter_message(text="I need your skill to suggest a career.")
+        #     return []
         
-        career_suggestion = self.get_career_suggestion(interest, skill)
-        dispatcher.utter_message(text=f"Based on your interest in {interest}, skill in {skill}, I suggest: {career_suggestion}.")
-        return []
-
-    @staticmethod
-    def get_career_suggestion(interest: Text, skill: Text) -> Text:
-       return "X"
+        # career_suggestion = self.get_career_suggestion(interest, skill)
+        # dispatcher.utter_message(text=f"Based on your interest in {interest}, skill in {skill}, I suggest: {career_suggestion}.")
+        # return []
+        ranked_careers = career_recommendation()
+        dispatcher.utter_message(text=f"Your career rankings: 1- {ranked_careers[0][0]}, with probability {ranked_careers[0][1]}, 2: {ranked_careers[1][0]}, with probability {ranked_careers[1][1]}, 3:{ranked_careers[2][0]}, with probability {ranked_careers[2][1]}")
 
 
