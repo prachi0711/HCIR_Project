@@ -34,6 +34,7 @@ class PepperCareerAdvisor:
 
     def speak(self, text):
         """Makes Pepper speak the given text."""
+        print(text)
         self.tts_engine.say(text)
         self.tts_engine.runAndWait()
 
