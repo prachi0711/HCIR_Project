@@ -33,7 +33,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 
 
-from bayesian_network_callback import career_recommendation
+from rasa_agent.bayesian_network_callback import career_recommendation
 
 
 class ActionSetInterest(Action):
