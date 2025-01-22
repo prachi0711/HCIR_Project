@@ -109,6 +109,58 @@ The module depends on the following:
 
 ---
 
+## Manager Class: PepperGUI
+
+The `PepperGUI` class integrates various modules, such as Rasa, Bayesian networks, Face Detection, Behavior Control, and a GUI interface.
+
+### Features
+- Combines Rasa for conversational AI and behavior control for dynamic responses.
+- Includes a GUI built with Tkinter for user interaction.
+- Uses Face Detection to authenticate users and personalize conversations.
+- Displays real-time webcam feed with user greetings.
+
+### Code Overview
+The main functionalities of the `PepperGUI` class include:
+
+#### `initialize_console()`
+- Sets up the GUI console for displaying messages and receiving user input.
+
+#### `initialize_webcam()`
+- Configures the webcam feed area in the GUI.
+
+#### `process_input(event)`
+- Handles user input from the console.
+- Starts the webcam for user authentication or processes chatbot queries based on input.
+
+#### `start_webcam()`
+- Activates the webcam and uses the `FaceDetection` module to identify users.
+- Updates the GUI with the authenticated user's name and starts the conversation.
+
+#### `update_webcam_feed(frame)`
+- Updates the webcam feed on the GUI with real-time video frames.
+
+#### `process_user_input(user_input)`
+- Sends user input to the Rasa server and displays the chatbot's response in the GUI.
+
+#### `send_message_to_rasa(message)`
+- Sends a message to the Rasa server via REST API and returns the chatbot's response.
+
+#### `close_app()`
+- Safely terminates the application and releases resources.
+
+### Dependencies
+The `PepperGUI` module depends on the following:
+- Tkinter: For creating the graphical user interface.
+- OpenCV: For handling video streams.
+- Rasa: For conversational AI.
+- `face_detection.FaceDetection`: For user authentication.
+- `behaviour.BehaviourController`: For behavior management and dynamic responses.
+
+### Notes
+- Ensure the Rasa server is running and accessible at the specified `rasa_url`.
+- Webcam access is required for the face detection feature.
+---
+
 
 ## Running the Project
 
