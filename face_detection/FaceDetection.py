@@ -1,7 +1,8 @@
 import threading
+import time
 
 from deepface import DeepFace
-from UserManager import *
+from face_detection.UserManager import *
 
 class FaceDetection:
     def __init__(self):
@@ -47,13 +48,8 @@ class FaceDetection:
                 self.counter += 1
 
                 if self.face_match:
-
-                    cv2.putText(frame, f"Hi {self.current_user.username}!", (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 255, 0), 3)
-                    if self.facial_areas_dict is not None:
-                        facial_areas = self.facial_areas_dict['img1']
-                        cv2.rectangle(frame, (facial_areas['x'], facial_areas['y']),
-                                      (facial_areas['x'] + facial_areas['w'], facial_areas['y'] + facial_areas['h']),
-                                      (0, 0, 255, 255), 2)
+                        self.face_detected(frame)
+                        return self.current_user.username
                 else:
                     cv2.putText(frame, "Unauthorized User!", (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 2)
 
@@ -61,13 +57,27 @@ class FaceDetection:
 
             key = cv2.waitKey(1)
             if key == ord('q'):
-                break
+                return None
+
+
+
+    def face_detected(self, frame):
+        print("DETECTED!")
+        cv2.putText(frame, f"Hi {self.current_user.username}!", (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 255, 0),
+                    3)
+        # if self.facial_areas_dict is not None:
+        #     facial_areas = self.facial_areas_dict['img1']
+        #     cv2.rectangle(frame, (facial_areas['x'], facial_areas['y']),
+        #                   (facial_areas['x'] + facial_areas['w'], facial_areas['y'] + facial_areas['h']),
+        #                   (0, 0, 255, 255), 2)
+        cv2.imshow('video', frame)
+
+        cv2.waitKey(2000)
+
 
         cv2.destroyAllWindows()
 
 
 
-if __name__ == '__main__':
-    face_detection = FaceDetection()
-    face_detection.run_face_detection()
+
 
