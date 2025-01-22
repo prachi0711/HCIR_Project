@@ -177,7 +177,7 @@ The server will be accessible at http://localhost:5005.
 Run the pepper simulation script
 
 
-    python behaviour_script.py
+    python PepperGUI.py
 
 This will launch the Qibullet simulation, start the Pepper robot, and enable the conversation to begin.
 
