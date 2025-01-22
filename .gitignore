@@ -1,2 +1,3 @@
 rasa_agent/.rasa/*
 rasa_agent/models/*
+rasa_agent/actions/__pycache__/*
