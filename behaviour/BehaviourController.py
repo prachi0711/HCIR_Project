@@ -1,3 +1,5 @@
+from pyexpat.errors import messages
+
 from qibullet import SimulationManager, PepperVirtual
 import pyttsx3
 import time
@@ -26,6 +28,7 @@ class BehaviourController:
 
         self.wave()
         self.speak(message)
+        return message
 
     def speak(self, text):
         """Makes Pepper speak the given text."""
@@ -51,8 +54,10 @@ class BehaviourController:
 
     def say_goodbye(self):
         """Generates a goodbye message and wave."""
-        self.speak("Thank you for visiting! Goodbye and good luck with your career.")
+        message = "Thank you for visiting! Goodbye and good luck with your career."
+        self.speak(message)
         self.wave()
+        return message
 
     def stop_simulation(self):
         """Stops the simulation."""
