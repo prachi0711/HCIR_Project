@@ -7,6 +7,10 @@ pyttsx3==2.98
 qibullet==1.4.6
 requests==2.32.3
 urllib3==2.2.3
-
+rasa==3.6.21
 opencv-python~=4.10.0.84
 deepface~=0.0.93
+sqlalchemy<2.0
+soupsieve~=2.6
+pyagrum~=1.13.2
+packaging==20.9

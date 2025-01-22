@@ -2,15 +2,15 @@
     "users": [
         {
             "username": "Behrouz",
-            "image": "images/Behrouz.jpg"
+            "image": "face_detection/images/Behrouz.jpg"
         },
         {
             "username": "Prachi",
-            "image": "images/Prachi.jpg"
+            "image": "face_detection/images/Prachi.jpg"
         },
         {
             "username": "Ujjwal",
-            "image": "images/Ujjwal.jpg"
+            "image": "face_detection/images/Ujjwal.jpg"
         }
     ]
 }

@@ -5,7 +5,7 @@ import json
 class UserManager:
     def __init__(self):
         self.authorized_users = []
-        self.load_users_from_json('users.json')
+        self.load_users_from_json('face_detection/users.json')
 
     def add_user(self, user):
         self.authorized_users.append(user)
