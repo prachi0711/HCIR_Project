@@ -58,12 +58,20 @@ class PepperGUI:
 
         if user_input.lower() in ["yes", "y"] and not self.webcam_active:
             self.start_webcam()
+
         elif user_input.lower() in ["no", "n",] and not self.user_name:
-            self.console_text.insert(tk.END, "See you!\n")
+            self.console_text.insert(tk.END, f"You: {self.behaviour_controller.say_goodbye()}\n")
+            self.behaviour_controller.stop_simulation()
+
         elif not self.webcam_active and self.user_name:
-            self.process_user_input(user_input)
-        elif user_input.lower() in [ "exit", "quit", "bye"] and self.user_name:
-            self.console_text.insert(tk.END, "See you!\n")
+            if user_input.lower() in ["exit", "quit", "bye"]:
+                self.console_text.insert(tk.END, f"You: {self.behaviour_controller.say_goodbye()}\n")
+                self.behaviour_controller.stop_simulation()
+            else:
+                self.process_user_input(user_input)
+
+
+
         else:
             self.console_text.insert(tk.END, "Invalid input. Please type Yes or No.\n")
 
@@ -84,9 +92,11 @@ class PepperGUI:
 
                 if self.user_name:
                     self.webcam_active = False
-                    self.console_text.insert(tk.END, f"Welcome, {self.user_name}!\n")
+                    self.console_text.insert(tk.END, f"Authorized User: {self.user_name}\n")
                     self.console_text.insert(tk.END, "You can now start chatting.\n")
-                    self.behaviour_controller.greet_user(self.user_name)
+                    self.console_text.insert(tk.END, "-------------------------------------------------\n")
+                    message = self.behaviour_controller.greet_user(self.user_name)
+                    self.console_text.insert(tk.END, f"{message}\n")
                     self.master.update()
                     break
 
@@ -118,6 +128,7 @@ class PepperGUI:
             for response in rasa_response:
                 if 'text' in response:
                     response_text = response['text']
+                    self.behaviour_controller.speak(response_text)
                     self.console_text.insert(tk.END, f"Pepper: {response_text}\n")
                     self.console_text.see(tk.END)
 
