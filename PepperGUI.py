@@ -87,7 +87,8 @@ class PepperGUI:
                 self.update_webcam_feed(frame)
                 if counter % 30 == 0:
                     # Pass the frame to FaceDetection for processing
-                    self.user_name = self.face_detection.run_face_detection(frame)
+                   # self.user_name = self.face_detection.run_face_detection(frame)
+                    self.user_name = "Behrouz"
                 counter += 1
 
                 if self.user_name:

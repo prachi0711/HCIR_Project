@@ -1,33 +1,33 @@
 nlu:
-  # - intent: provide_interest
-  #   examples: |
-  #     - I’m interested in [Science](interest).
-  #     - My interest is in [arts](interest).
-  #     - I’m interested in [Technology](interest).
-  #     - [arts](interest)
-  #     - [Technology](interest)
-  #     - [Science](interest)
-  #     - I love [science](interest).
-  #     - I love [arts](interest).
-  #     - I love [Technology](interest).
-  #     - I like [arts](interest).
-  #     - I like [science](interest).
-  #     - I like [Technology](interest).
+  - intent: provide_interest
+    examples: |
+      - I’m interested in [Science](interest).
+      - My interest is in [arts](interest).
+      - I’m interested in [Technology](interest).
+      - [arts](interest)
+      - [Technology](interest)
+      - [Science](interest)
+      - I love [science](interest).
+      - I love [arts](interest).
+      - I love [Technology](interest).
+      - I like [arts](interest).
+      - I like [science](interest).
+      - I like [Technology](interest).
 
-  # - intent: provide_skill
-  #   examples: |
-  #     - I have [analytical](skill) skills.
-  #     - I have [creative](skill) skills.
-  #     - I have [communicative](skill) skills.
-  #     - My skill is in [analytics](skill).
-  #     - My skill is in [creation](skill).
-  #     - My skill is in [communication](skill).
-  #     - I excel at [analytics](skill).
-  #     - I excel at [communication](skill).
-  #     - I excel at [creative](skill) skills.
-  #     - [analytical](skill)
-  #     - [creative](skill)
-  #     - [communicative](skill)
+  - intent: provide_skill
+    examples: |
+      - I have [analytical](skill) skills.
+      - I have [creative](skill) skills.
+      - I have [communicative](skill) skills.
+      - My skill is in [analytics](skill).
+      - My skill is in [creation](skill).
+      - My skill is in [communication](skill).
+      - I excel at [analytics](skill).
+      - I excel at [communication](skill).
+      - I excel at [creative](skill) skills.
+      - [analytical](skill)
+      - [creative](skill)
+      - [communicative](skill)
 
 
   - intent: career_help
