@@ -7,7 +7,9 @@ from face_detection.UserManager import *
 
 class FaceDetection:
     def __init__(self):
-
+        # self.cap = cv2.VideoCapture(0, cv2.CAP_V4L)
+        # self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+        # self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
         self.manager = UserManager()
         self.user_list = self.manager.get_users()
@@ -47,4 +49,15 @@ class FaceDetection:
         print("DETECTED!")
         cv2.putText(frame, f"Hi {self.current_user.username}!", (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 255, 0),
                     3)
+        # if self.facial_areas_dict is not None:
+        #     facial_areas = self.facial_areas_dict['img1']
+        #     cv2.rectangle(frame, (facial_areas['x'], facial_areas['y']),
+        #                   (facial_areas['x'] + facial_areas['w'], facial_areas['y'] + facial_areas['h']),
+        #                   (0, 0, 255, 255), 2)
         cv2.imshow('video', frame)
+
+       # cv2.waitKey(2000)
+
+        # Release the webcam resource and close OpenCV windows
+       # self.cap.release()
+       # cv2.destroyAllWindows()
