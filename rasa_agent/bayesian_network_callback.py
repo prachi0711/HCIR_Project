@@ -4,7 +4,7 @@
 import pyAgrum as gum
 import itertools
 
-def career_recommendation():
+def career_recommendation(interest, skill, background, lifestyle):
 
 
     bn = gum.BayesNet('CareerCoach')
@@ -83,13 +83,6 @@ def career_recommendation():
 
     # Inference
     ie = gum.LazyPropagation(bn)
-
-    # User input
-    print("Please Enter your Preferences:")
-    interest = int(input("Interest (0: Science, 1: Arts, 2: Technology): "))
-    skill = int(input("Skill (0: Analytical, 1: Creative, 2: Communicative): "))
-    background = int(input("Background (0: STEM, 1: Humanities, 2: Commerce): "))
-    lifestyle = int(input("Lifestyle (0: Flexible, 1: Fixed Hours, 2: Traveling): "))
 
     # Evidence
     ie.setEvidence({'Interest': interest, 'Skill': skill, 'Background': background, 'Lifestyle': lifestyle})
