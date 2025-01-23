@@ -31,7 +31,7 @@ from typing import Any, Dict, List, Text
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
-
+from bayesian_network_callback import career_recommendation
 
 class ActionSetInterest(Action):
     def name(self) -> Text:
@@ -55,6 +55,7 @@ class ActionSetSkill(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         skill = next(tracker.get_latest_entity_values("skill"), None)
         if skill:
+            print(f"skill: {skill}!!!! ")
             return [SlotSet("skill", skill)]
         dispatcher.utter_message(text="I didn't catch your skill. Could you please repeat?")
         return []
@@ -96,6 +97,13 @@ class ActionSuggestCareer(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         interest = tracker.get_slot("interest")
         skill = tracker.get_slot("skill")
+        background = tracker.get_slot("background")
+        lifestyle = tracker.get_slot("lifestyle")
+
+        print(f"interest: {interest}!!!! ")
+        print(f"skill: {skill}!!!! ")
+        print(f"background: {background}!!!! ")
+        print(f"lifestyle: {lifestyle}!!!! ")
 
         if not interest:
             dispatcher.utter_message(text="I need your interest to suggest a career.")
@@ -103,13 +111,24 @@ class ActionSuggestCareer(Action):
         if not skill:
             dispatcher.utter_message(text="I need your skill to suggest a career.")
             return []
+
+        if not background:
+            dispatcher.utter_message(text="I need your background to suggest a career.")
+            return []
+        if not lifestyle:
+            dispatcher.utter_message(text="I need your lifestyle to suggest a career.")
+            return []
         
-        career_suggestion = self.get_career_suggestion(interest, skill)
+        career_suggestion = self.get_career_suggestion(interest, skill, background, lifestyle)
         dispatcher.utter_message(text=f"Based on your interest in {interest}, skill in {skill}, I suggest: {career_suggestion}.")
         return []
 
     @staticmethod
-    def get_career_suggestion(interest: Text, skill: Text) -> Text:
-       return "X"
+    def get_career_suggestion(interest: Text, skill: Text, background: Text, lifestyle: Text) -> Text:
+
+        ranked_careers = career_recommendation(interest, skill, background, lifestyle)
+        text_result = f"Your career rankings: 1- {ranked_careers[0][0]}, with probability {ranked_careers[0][1]}, 2: {ranked_careers[1][0]}, with probability {ranked_careers[1][1]}, 3:{ranked_careers[2][0]}, with probability {ranked_careers[2][1]}"
+
+        return text_result
 
 
