@@ -1,13 +1,40 @@
 stories:
-  - story: career recommendation path
-    steps:
-      - intent: career_help
-      - action: utter_ask_interest
-      - intent: provide_interest
-      - action: action_set_interest
-      - action: utter_ask_skill
-      - intent: provide_skill
-      - action: action_set_skill
-      - action: action_suggest_career
-      - intent: goodbye
-      - action: utter_press_exit
+- story: career recommendation path
+  steps:
+  - intent: career_help
+  - action: utter_ask_interest
+  - intent: provide_interest
+    entities:
+    - interest: art
+  - slot_was_set:
+    - interest: art
+  - action: action_set_interest
+  - slot_was_set:
+    - interest: art
+  - action: utter_ask_skill
+  - intent: provide_skill
+    entities:
+    - skill: creative
+  - slot_was_set:
+    - skill: creative
+  - action: action_set_skill
+  - slot_was_set:
+    - skill: creative
+  - action: utter_ask_background
+  - intent: provide_background
+    entities:
+    - background: STEM
+  - slot_was_set:
+    - background: STEM
+  - action: action_set_background
+  - slot_was_set:
+    - background: STEM
+  - action: utter_ask_lifestyle
+  - intent: provide_lifestyle
+    entities:
+    - lifestyle: Flexible
+  - slot_was_set:
+    - lifestyle: Flexible
+  - action: action_suggest_career
+  - action: utter_press_exit
+  - intent: goodbye

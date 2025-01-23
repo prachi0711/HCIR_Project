@@ -58,7 +58,35 @@ class ActionSetSkill(Action):
             return [SlotSet("skill", skill)]
         dispatcher.utter_message(text="I didn't catch your skill. Could you please repeat?")
         return []
-    
+
+
+class ActionSetBackground(Action):
+    def name(self) -> Text:
+        return "action_set_background"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        background = next(tracker.get_latest_entity_values("background"), None)
+        if background:
+            return [SlotSet("background", background)]
+        dispatcher.utter_message(text="I didn't catch your background. Could you please repeat?")
+        return []
+
+class ActionSetLifeStyle(Action):
+    def name(self) -> Text:
+        return "action_set_lifestyle"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        lifestyle = next(tracker.get_latest_entity_values("lifestyle"), None)
+        if lifestyle:
+            return [SlotSet("lifestyle", lifestyle)]
+        dispatcher.utter_message(text="I didn't catch your lifestyle. Could you please repeat?")
+        return []
+
+
 class ActionSuggestCareer(Action):
     def name(self) -> Text:
         return "action_suggest_career"
