@@ -1,39 +1,59 @@
+version: '3.1'
 intents:
-  - career_help
-  - provide_interest
-  - provide_skill
-  - goodbye
-
+- career_help
+- goodbye
+- provide_background
+- provide_interest
+- provide_lifestyle
+- provide_skill
 entities:
-  - interest
-  - skill
-
+- interest
+- skill
+- background
+- lifestyle
 slots:
   interest:
     type: text
     mappings:
-      - type: from_entity
-        entity: interest
+    - type: from_entity
+      entity: interest
   skill:
     type: text
     mappings:
-      - type: from_entity
-        entity: skill
-
-
+    - type: from_entity
+      entity: skill
+  background:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: background
+  lifestyle:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: lifestyle
 responses:
   utter_ask_interest:
-    - text: "What are your interests? Science, Arts, or Technology ?"
+  - text: What are your interests? Science, Arts, or Technology ?
   utter_ask_skill:
-    - text: "Great! What skills do you have? Analytical, Creative or Communicative?"
+  - text: Great! What skills do you have? Analytical, Creative or Communicative?
   utter_ask_background:
-    - text: "what background do you have? STEM, humanities or commerce?"
+  - text: what background do you have? STEM, humanities or commerce?
   utter_ask_lifestyle:
-    - text: "What lifestyle do you prefer? Flexible, fixed hours or traveling? "
+  - text: What lifestyle do you prefer? Flexible, fixed hours or traveling?
   utter_press_exit:
-    - text: "Hope it was helpful. Enter BYE to exit."
-  
+  - text: Hope it was helpful. Enter BYE to exit.
 actions:
-  - action_set_interest
-  - action_set_skill
-  - action_suggest_career
+- utter_ask_background
+- utter_ask_lifestyle
+- action_set_interest
+- action_set_background
+- utter_press_exit
+- action_set_skill
+- action_suggest_career
+- utter_ask_interest
+- utter_ask_skill
+- action_set_lifestyle
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
