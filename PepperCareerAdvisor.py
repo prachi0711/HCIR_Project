@@ -131,6 +131,7 @@ class PepperCareerAdvisor:
                     response_text = response['text']
                     self.console_text.insert(tk.END, f"Pepper: {response_text}\n")
                     self.console_text.see(tk.END)
+                    self.master.update()
                     self.behaviour_controller.speak(response_text)
 
     def send_message_to_rasa(self, message):
